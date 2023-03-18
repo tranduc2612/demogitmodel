@@ -1,7 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@foreach (var item in @ViewBag.lst)
+{
+    <h1>@item.TenKh</h1>
+}
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>

@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication3.Models;
 
-public partial class QlbanSachContext : DbContext
+public partial class Qlbansach1Context : DbContext
 {
-    public QlbanSachContext()
+    public Qlbansach1Context()
     {
     }
 
-    public QlbanSachContext(DbContextOptions<QlbanSachContext> options)
+    public Qlbansach1Context(DbContextOptions<Qlbansach1Context> options)
         : base(options)
     {
     }
@@ -45,7 +45,7 @@ public partial class QlbanSachContext : DbContext
         {
             entity.HasKey(e => new { e.SoHdb, e.MaSach });
 
-            entity.ToTable("tChiTietHDB", tb => tb.HasTrigger("Cau2Ktra"));
+            entity.ToTable("tChiTietHDB");
 
             entity.Property(e => e.SoHdb)
                 .HasMaxLength(10)

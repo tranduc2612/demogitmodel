@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using WebApplication3.Models;
 
@@ -7,7 +8,7 @@ namespace WebApplication3.Controllers
 	public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
-
+		QlbanSachContext db = new QlbanSachContext();
 		public HomeController(ILogger<HomeController> logger)
 		{
 			_logger = logger;
@@ -15,6 +16,8 @@ namespace WebApplication3.Controllers
 
 		public IActionResult Index()
 		{
+			var lst = db.TKhachHangs.AsNoTracking().ToList();
+			ViewBag.lst = lst;
 			return View();
 		}
 

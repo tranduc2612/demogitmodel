@@ -15,7 +15,5 @@ public partial class TKhachHang
 
     public bool? GioiTinh { get; set; }
 
-    public int? SlsachMua { get; set; }
-
     public virtual ICollection<THoaDonBan> THoaDonBans { get; } = new List<THoaDonBan>();
 }
