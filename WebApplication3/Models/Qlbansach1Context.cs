@@ -8,6 +8,7 @@ namespace WebApplication3.Models;
 public partial class Qlbansach1Context : DbContext
 {
     readonly string connectionString;
+    string asdads;
     public Qlbansach1Context()
     {
         DotEnv.Load();
