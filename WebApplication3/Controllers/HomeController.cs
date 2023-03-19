@@ -8,7 +8,7 @@ namespace WebApplication3.Controllers
 	public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
-		QlbanSachContext db = new QlbanSachContext();
+		Qlbansach1Context db = new Qlbansach1Context();
 		public HomeController(ILogger<HomeController> logger)
 		{
 			_logger = logger;
@@ -16,7 +16,7 @@ namespace WebApplication3.Controllers
 
 		public IActionResult Index()
 		{
-			var lst = db.TKhachHangs.AsNoTracking().ToList();
+			var lst = db.TNhanViens.AsNoTracking().ToList();
 			ViewBag.lst = lst;
 			return View();
 		}

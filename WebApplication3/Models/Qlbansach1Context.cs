@@ -7,12 +7,17 @@ namespace WebApplication3.Models;
 
 public partial class Qlbansach1Context : DbContext
 {
-    readonly string connectionString;
-    string asdads;
+    string ConnectionString;
     public Qlbansach1Context()
     {
-        DotEnv.Load();
-        connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+        var config = new ConfigurationBuilder()
+        .AddJsonFile("appsettings.json")
+        .AddEnvironmentVariables()
+        .Build();
+
+        // Get values from configuration
+        ConnectionString = config["MyAppSettings:Setting1"];
+
     }
 
     public Qlbansach1Context(DbContextOptions<Qlbansach1Context> options)
@@ -42,7 +47,7 @@ public partial class Qlbansach1Context : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer(connectionString);
+        => optionsBuilder.UseSqlServer(ConnectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
